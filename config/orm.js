@@ -2,46 +2,50 @@ const connection = require("./connection");
 
 const orm = {
 
-    selectAll: function (table_name) {
+    selectAll: function () {
 
-        let queryString = "SELECT * FROM ??;";
+        let queryString = "SELECT * FROM burgers;";
 
-        connection.query(queryString, [table_name], function (err, result) {
+        connection.query(queryString, function (err, result) {
 
             if (err) throw err;
 
-            console.log(result);
+            result.forEach(element => {
+
+                console.log(element);
+
+            });
 
         });
 
     },
 
-    insertOne: function (table_name, col1, col2, val1, bool2) {
+    insertOne: function (name, devoured) {
 
-        let queryString = "INSERT INTO ??(??, ??) VALUES (?, ?);";
+        let queryString = "INSERT INTO burgers(burger_name, devoured) VALUES (?, ?);";
 
-        connection.query(queryString, [table_name, col1, col2, val1, bool2], function (err, result) {
+        connection.query(queryString, [name, devoured], function (err, result) {
 
             if (err) throw err;
 
             console.log("Successfully added:\n");
 
-            orm.selectAll(table_name);
+            orm.selectAll();
 
         });
     },
 
-    updateOne: function (table_name, col1, val1, idVal) {
+    updateOne: function (col1, val1, idVal) {
 
-        let queryString = "UPDATE ?? SET ?? = ? WHERE id = ?;";
+        let queryString = "UPDATE burgers SET ?? = ? WHERE id = ?;";
 
-        connection.query(queryString, [table_name, col1, val1, idVal], function (err, result) {
+        connection.query(queryString, [col1, val1, idVal], function (err, result) {
 
             if (err) throw err;
 
             console.log("Successfully updated:\n");
 
-            orm.selectAll(table_name);
+            orm.selectAll();
 
         })
         
@@ -50,6 +54,7 @@ const orm = {
 
 }
 
-// orm.selectAll("burgers");
+orm.selectAll();
 
-orm.updateOne("burgers", "burger_name", "el muy macho", 5);
+orm.insertOne("the bagel burger", true);
+
