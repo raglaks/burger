@@ -6,14 +6,15 @@ router.get("/", function (req, res) {
 
     burger.allBurgers(function (data) {
 
-        console.log(data);
+        //console.log(data);
 
         // data.forEach(element => {
             
-        //     console.log(element.id);
+        //     console.log(element.burger_name);
 
         // });
 
+        res.render("index", data);
     });
 
 });
