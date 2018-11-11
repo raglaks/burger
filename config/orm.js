@@ -2,59 +2,55 @@ const connection = require("./connection");
 
 const orm = {
 
-    selectAll: function () {
+    selectAll: function (tableName, cb) {
 
-        let queryString = "SELECT * FROM burgers;";
+        let queryString = "SELECT * FROM ??;";
 
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, tableName, function (err, result) {
 
             if (err) throw err;
 
-            result.forEach(element => {
+            // result.forEach(element => {
 
-                console.log(element);
+            //     console.log(element);
 
-            });
+            // });
+
+            cb(result);
 
         });
 
     },
 
-    insertOne: function (name, devoured) {
+    insertOne: function (tableName, col1, col2, name, devoured, cb) {
 
-        let queryString = "INSERT INTO burgers(burger_name, devoured) VALUES (?, ?);";
+        let queryString = "INSERT INTO ??(??, ??) VALUES (?, ?);";
 
-        connection.query(queryString, [name, devoured], function (err, result) {
+        connection.query(queryString, [tableName, col1, col2, name, devoured], function (err, result) {
 
             if (err) throw err;
 
-            console.log("Successfully added:\n");
-
-            orm.selectAll();
+            cb(result);
 
         });
+
     },
 
-    updateOne: function (col1, val1, idVal) {
+    updateOne: function (tableName, col1, val1, idVal, cb) {
 
-        let queryString = "UPDATE burgers SET ?? = ? WHERE id = ?;";
+        let queryString = "UPDATE ?? SET ?? = ? WHERE id = ?;";
 
-        connection.query(queryString, [col1, val1, idVal], function (err, result) {
+        connection.query(queryString, [tableName, col1, val1, idVal], function (err, result) {
 
             if (err) throw err;
 
-            console.log("Successfully updated:\n");
+            cb(result);
 
-            orm.selectAll();
-
-        })
+        });
         
-
     }
 
 }
 
-orm.selectAll();
-
-orm.insertOne("the bagel burger", true);
+module.exports = orm;
 

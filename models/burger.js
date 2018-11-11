@@ -2,32 +2,42 @@ const orm = require("../config/orm");
 
 const burger = {
 
-    allBurgers: function () {
+    allBurgers: function (cb) {
 
-        orm.selectAll("burgers");
+        orm.selectAll("burgers", function(res) {
 
-    },
+            cb(res);
 
-    newBurger: function (name, devoured) {
-
-        orm.insertOne("burgers", "burger_name", "devoured", name, devoured);
-
-        console.log("\nSuccessfully added.\n");
+        });
 
     },
 
-    editBurger: function (col1, val1, idVal) {
+    newBurger: function (name, devoured, cb) {
 
-        orm.updateOne("burgers", col1, val1, idVal);
+        orm.insertOne("burgers", "burger_name", "devoured", name, devoured, function (res) {
 
-        console.log("\nSuccessfully updated.\n");
+            cb(res);
+
+        });
+
+    },
+
+    editBurger: function (col1, val1, idVal, cb) {
+
+        orm.updateOne("burgers", col1, val1, idVal, function (res) {
+
+            cb(res);
+
+        });
 
     }
 
 }
 
-//burger.newBurger("el muy macho", false);
+//burger.newBurger("salmon sizzler", false);
 
-burger.editBurger("burger_name", "rated r", 7);
+// burger.editBurger("burger_name", "rated r", 7);
 
-burger.allBurgers("burgers");
+//burger.allBurgers("burgers");
+
+module.exports = burger;
