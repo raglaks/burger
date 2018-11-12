@@ -33,7 +33,23 @@ router.get("/index", function (req, res) {
         console.log(resObj);
 
         res.render("index", resObj);
-        
+
+    });
+
+});
+
+router.post("/api/burgers", function (req, res) {
+
+    let newName = req.body.burger_name;
+
+    console.log(newName);
+
+    burger.newBurger(newName, false, function (data) {
+
+        console.log(data);
+
+        res.json({ data })
+
     });
 
 });
