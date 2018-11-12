@@ -22,9 +22,9 @@ const burger = {
 
     },
 
-    editBurger: function (col1, val1, idVal, cb) {
+    editBurger: function ( val1, idVal, cb) {
 
-        orm.updateOne("burgers", col1, val1, idVal, function (res) {
+        orm.updateOne("burgers", "devoured", val1, idVal, function (res) {
 
             cb(res);
 
