@@ -10,12 +10,6 @@ const orm = {
 
             if (err) throw err;
 
-            // result.forEach(element => {
-
-            //     console.log(element);
-
-            // });
-
             cb(result);
 
         });

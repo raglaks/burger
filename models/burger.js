@@ -34,10 +34,4 @@ const burger = {
 
 }
 
-//burger.newBurger("salmon sizzler", false);
-
-// burger.editBurger("burger_name", "rated r", 7);
-
-//burger.allBurgers("burgers");
-
 module.exports = burger;
