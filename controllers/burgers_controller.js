@@ -6,15 +6,35 @@ router.get("/", function (req, res) {
 
     burger.allBurgers(function (data) {
 
-        //console.log(data);
+        //0 is false, 1 is true
 
-        // data.forEach(element => {
-            
-        //     console.log(element.burger_name);
+        let resObj = {
 
-        // });
+            eaten: [],
 
-        res.render("index", data);
+            safe: []
+
+        }
+
+        data.forEach(element => {
+
+            // console.log(element.devoured);
+
+            if (element.devoured === 1) {
+
+                resObj.eaten.push(element);
+
+            } else {
+
+                resObj.safe.push(element);
+
+            }
+
+        });
+
+        console.log(resObj);
+
+        res.render("index", resObj);
     });
 
 });
