@@ -18,8 +18,6 @@ router.get("/index", function (req, res) {
 
         data.forEach(element => {
 
-            // console.log(element.devoured);
-
             if (element.devoured === 1) {
 
                 resObj.eaten.push(element);
@@ -35,6 +33,7 @@ router.get("/index", function (req, res) {
         console.log(resObj);
 
         res.render("index", resObj);
+        
     });
 
 });

@@ -63,3 +63,26 @@
     </div>
 
 </div>
+
+<script>
+
+    $("button").on("click", function (event) {
+
+        let ID = this.id;
+
+        $.ajax("/api/burgers/" + ID, {
+
+            type: "PUT",
+            data: true
+
+        }).then(function () {
+
+            console.log("tasty");
+            
+            location.reload();
+
+        });
+
+    });
+
+</script>
