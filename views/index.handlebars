@@ -30,7 +30,11 @@
 
                 {{#each safe}}
 
-                <p>{{id}}. {{burger_name}}</p>
+                <p>{{id}}. {{burger_name}}
+
+                    <button type="button" class="btn btn-danger" id={{id}}>Danger</button>
+
+                </p>
 
                 {{/each}}
 
@@ -42,7 +46,7 @@
 
             <h3>Devoured:</h3>
 
-             <h5>
+            <h5>
 
                 {{#each eaten}}
 
