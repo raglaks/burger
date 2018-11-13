@@ -20,8 +20,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
 
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 
 });
