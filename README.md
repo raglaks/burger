@@ -10,4 +10,6 @@ As for the front-end build, this was the first time that I used Handlebars.js. A
 
 As I dive deeper into web development, I have realized that building the front-end of an app isn't simply about making static HTML, CSS and JavaScript pages. It obviously goes far beyond that. I hope to get more exposure to this with more complex templating engines like Angular and React. But for now, Handlebars will allow for good practice.
 
-Check out the app here: 
+[Click here to view the site](https://evening-waters-37850.herokuapp.com/index).
+
+_If you want to run this locally, clone the repo and run_ `npm i`. _You'll also have to configure the settings in_ **connection.js** _to run the SQL files in your local database._
